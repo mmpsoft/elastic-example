@@ -39,7 +39,7 @@ services:
         hard: -1
     volumes:
       - elastic-data02:/usr/share/elasticsearch/data
-      - elastic-data01-plugins:/usr/share/elasticsearch/plugins
+      - elastic-data02-plugins:/usr/share/elasticsearch/plugins
     networks:
       - elastic
 
@@ -70,6 +70,8 @@ services:
       - ELASTICSEARCH_HOSTS=http://es01:9200
     ports:
       - "5601:5601"
+    volumes:
+      - kibana:/usr/share/kibana
     depends_on:
       - es01
       - es02
@@ -84,6 +86,7 @@ volumes:
   elastic-data01-plugins:
   elastic-data02-plugins:
   elastic-data03-plugins:
+  kibana:
 
 networks:
   elastic:
